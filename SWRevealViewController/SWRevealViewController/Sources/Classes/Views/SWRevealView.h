@@ -22,4 +22,9 @@
 @property (nonatomic, readonly) UIView *rightView;
 @property (nonatomic, readonly) UIView *frontView;
 @property (nonatomic, assign) BOOL disableLayout;
+
+#pragma mark - Methods
+
+- (void)reloadShadow;
+
 @end
