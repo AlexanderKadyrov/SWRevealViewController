@@ -24,10 +24,9 @@
  
 */
 
-#import <QuartzCore/QuartzCore.h>
-
 #import "SWRevealViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
+#import "SWRevealView.h"
 
 #pragma mark - StatusBar Helper Function
 
