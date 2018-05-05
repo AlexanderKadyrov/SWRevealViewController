@@ -26,5 +26,7 @@
 #pragma mark - Methods
 
 - (void)reloadShadow;
+- (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition;
+- (void)dragFrontViewToXLocation:(CGFloat)xLocation;
 
 @end
