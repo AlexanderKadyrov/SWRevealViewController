@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11C91152209E55ED006B6466 /* SWRevealViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C91150209E55ED006B6466 /* SWRevealViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11C9115D209E56E2006B6466 /* SWRevealViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C9115B209E56E2006B6466 /* SWRevealViewController.h */; };
+		11C9115E209E56E2006B6466 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9115C209E56E2006B6466 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11C9114D209E55ED006B6466 /* SWRevealViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWRevealViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		11C91150209E55ED006B6466 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		11C91151209E55ED006B6466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11C9115B209E56E2006B6466 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		11C9115C209E56E2006B6466 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +48,35 @@
 		11C9114F209E55ED006B6466 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
-				11C91150209E55ED006B6466 /* SWRevealViewController.h */,
+				11C91158209E5690006B6466 /* Sources */,
 				11C91151209E55ED006B6466 /* Info.plist */,
 			);
 			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		11C91158209E5690006B6466 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				11C91159209E56A5006B6466 /* Classes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		11C91159209E56A5006B6466 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				11C9115A209E56B6006B6466 /* ViewControllers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		11C9115A209E56B6006B6466 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11C9115B209E56E2006B6466 /* SWRevealViewController.h */,
+				11C9115C209E56E2006B6466 /* SWRevealViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,7 +86,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11C91152209E55ED006B6466 /* SWRevealViewController.h in Headers */,
+				11C9115D209E56E2006B6466 /* SWRevealViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C9115E209E56E2006B6466 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
