@@ -26,6 +26,10 @@
 #pragma mark - Methods
 
 - (void)reloadShadow;
+- (void)prepareRearViewForPosition:(FrontViewPosition)newPosition;
+- (void)prepareRightViewForPosition:(FrontViewPosition)newPosition;
+- (void)unloadRearView;
+- (void)unloadRightView;
 - (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition;
 - (void)dragFrontViewToXLocation:(CGFloat)xLocation;
 
