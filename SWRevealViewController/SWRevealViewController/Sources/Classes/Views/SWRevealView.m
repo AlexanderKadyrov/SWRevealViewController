@@ -7,6 +7,11 @@
 //
 
 #import "SWRevealView.h"
+#import "SWRevealViewController.h"
+
+@interface SWRevealView ()
+@property (nonatomic, strong, readonly) SWRevealViewController *c;
+@end
 
 @implementation SWRevealView
 
@@ -20,23 +25,18 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 
-- (id)initWithFrame:(CGRect)frame controller:(SWRevealViewController*)controller
-{
+- (instancetype)initWithFrame:(CGRect)frame controller:(SWRevealViewController *)controller {
     self = [super initWithFrame:frame];
-    if ( self )
-    {
+    if (self) {
         _c = controller;
         CGRect bounds = self.bounds;
-        
         _frontView = [[UIView alloc] initWithFrame:bounds];
         _frontView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self reloadShadow];
-        
         [self addSubview:_frontView];
     }
     return self;
 }
-
 
 - (void)reloadShadow
 {
