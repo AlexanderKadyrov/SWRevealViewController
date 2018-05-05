@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		11C9115D209E56E2006B6466 /* SWRevealViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C9115B209E56E2006B6466 /* SWRevealViewController.h */; };
 		11C9115E209E56E2006B6466 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9115C209E56E2006B6466 /* SWRevealViewController.m */; };
+		11C91162209E58A2006B6466 /* SWRevealView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C91160209E58A2006B6466 /* SWRevealView.h */; };
+		11C91163209E58A2006B6466 /* SWRevealView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C91161209E58A2006B6466 /* SWRevealView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,8 @@
 		11C91151209E55ED006B6466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11C9115B209E56E2006B6466 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		11C9115C209E56E2006B6466 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		11C91160209E58A2006B6466 /* SWRevealView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealView.h; sourceTree = "<group>"; };
+		11C91161209E58A2006B6466 /* SWRevealView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		11C91159209E56A5006B6466 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				11C9115F209E5878006B6466 /* Views */,
 				11C9115A209E56B6006B6466 /* ViewControllers */,
 			);
 			path = Classes;
@@ -79,6 +84,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		11C9115F209E5878006B6466 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11C91160209E58A2006B6466 /* SWRevealView.h */,
+				11C91161209E58A2006B6466 /* SWRevealView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -86,6 +100,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C91162209E58A2006B6466 /* SWRevealView.h in Headers */,
 				11C9115D209E56E2006B6466 /* SWRevealViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C9115E209E56E2006B6466 /* SWRevealViewController.m in Sources */,
+				11C91163209E58A2006B6466 /* SWRevealView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
