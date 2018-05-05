@@ -7,6 +7,7 @@
 //
 
 #import "SWRevealView.h"
+#import "SWStatusBar.h"
 
 @interface SWRevealView ()
 @property (nonatomic, strong, readonly) SWRevealViewController *c;

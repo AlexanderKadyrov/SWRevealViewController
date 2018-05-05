@@ -27,6 +27,7 @@
 #import "SWRevealViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SWRevealView.h"
+#import "SWStatusBar.h"
 
 #pragma mark - SWContextTransitioningObject
 
