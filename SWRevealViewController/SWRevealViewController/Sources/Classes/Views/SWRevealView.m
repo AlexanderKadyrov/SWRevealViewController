@@ -7,7 +7,6 @@
 //
 
 #import "SWRevealView.h"
-#import "SWRevealViewController.h"
 
 @interface SWRevealView ()
 @property (nonatomic, strong, readonly) SWRevealViewController *c;

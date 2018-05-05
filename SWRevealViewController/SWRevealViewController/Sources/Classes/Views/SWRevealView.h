@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class SWRevealViewController;
+#import "SWRevealViewController.h"
 
 @interface SWRevealView: UIView
 
