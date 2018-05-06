@@ -13,9 +13,11 @@
 		11C91163209E58A2006B6466 /* SWRevealView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C91161209E58A2006B6466 /* SWRevealView.m */; };
 		11C91167209E61E0006B6466 /* SWStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C91165209E61E0006B6466 /* SWStatusBar.h */; };
 		11C91168209E61E0006B6466 /* SWStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C91166209E61E0006B6466 /* SWStatusBar.m */; };
+		A7A3C47A227C7713C2FB00F3 /* Pods_SWRevealViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2490E74D4C82ADE33375BF61 /* Pods_SWRevealViewController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		066A23C1EFC7E25D94A7F248 /* Pods-SWRevealViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWRevealViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWRevealViewController/Pods-SWRevealViewController.debug.xcconfig"; sourceTree = "<group>"; };
 		11C9114D209E55ED006B6466 /* SWRevealViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWRevealViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C91151209E55ED006B6466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11C9115B209E56E2006B6466 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		11C91161209E58A2006B6466 /* SWRevealView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealView.m; sourceTree = "<group>"; };
 		11C91165209E61E0006B6466 /* SWStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWStatusBar.h; sourceTree = "<group>"; };
 		11C91166209E61E0006B6466 /* SWStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWStatusBar.m; sourceTree = "<group>"; };
+		2490E74D4C82ADE33375BF61 /* Pods_SWRevealViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWRevealViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8838503D08A2C28EEC0D0088 /* Pods-SWRevealViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWRevealViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWRevealViewController/Pods-SWRevealViewController.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7A3C47A227C7713C2FB00F3 /* Pods_SWRevealViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				11C9114F209E55ED006B6466 /* SWRevealViewController */,
 				11C9114E209E55ED006B6466 /* Products */,
+				758F77657FDA5CB32DAD9027 /* Pods */,
+				8FE97CDB649D310D35921DE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +114,23 @@
 			path = Additions;
 			sourceTree = "<group>";
 		};
+		758F77657FDA5CB32DAD9027 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				066A23C1EFC7E25D94A7F248 /* Pods-SWRevealViewController.debug.xcconfig */,
+				8838503D08A2C28EEC0D0088 /* Pods-SWRevealViewController.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8FE97CDB649D310D35921DE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2490E74D4C82ADE33375BF61 /* Pods_SWRevealViewController.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -127,6 +151,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11C91155209E55ED006B6466 /* Build configuration list for PBXNativeTarget "SWRevealViewController" */;
 			buildPhases = (
+				99340D7ABD93D1E5A4B8E198 /* [CP] Check Pods Manifest.lock */,
 				11C91148209E55ED006B6466 /* Sources */,
 				11C91149209E55ED006B6466 /* Frameworks */,
 				11C9114A209E55ED006B6466 /* Headers */,
@@ -181,6 +206,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		99340D7ABD93D1E5A4B8E198 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWRevealViewController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11C91148209E55ED006B6466 /* Sources */ = {
@@ -314,6 +360,7 @@
 		};
 		11C91156209E55ED006B6466 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 066A23C1EFC7E25D94A7F248 /* Pods-SWRevealViewController.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -325,11 +372,7 @@
 				INFOPLIST_FILE = SWRevealViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cloud.solutions.SWRevealViewController;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -339,6 +382,7 @@
 		};
 		11C91157209E55ED006B6466 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8838503D08A2C28EEC0D0088 /* Pods-SWRevealViewController.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -350,11 +394,7 @@
 				INFOPLIST_FILE = SWRevealViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cloud.solutions.SWRevealViewController;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
