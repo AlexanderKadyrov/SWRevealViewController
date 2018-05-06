@@ -382,6 +382,8 @@ const int FrontViewPositionNone = 0xff;
         _contentView = [[SWRevealView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
     
+    [self reloadShadow];
+    
     // set the content view to resize along with its superview
     _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     

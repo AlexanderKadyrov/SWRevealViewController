@@ -43,7 +43,6 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 - (void)makeItems {
     self.frame = [UIScreen mainScreen].bounds;
     _frontView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self reloadShadow];
     [self addSubview:_frontView];
     [self.frontView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
