@@ -170,29 +170,10 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     _frontView.layer.shadowPath = shadowPath.CGPath;
 }
 
-
-- (BOOL)pointInsideD:(CGPoint)point withEvent:(UIEvent *)event
-{
+- (BOOL)pointInsideD:(CGPoint)point withEvent:(UIEvent *)event {
     BOOL isInside = [super pointInside:point withEvent:event];
-    if ( _c.extendsPointInsideHit )
-    {
-        if ( !isInside  && _rearView && [_c.rearViewController isViewLoaded] )
-        {
-            CGPoint pt = [self convertPoint:point toView:_rearView];
-            isInside = [_rearView pointInside:pt withEvent:event];
-        }
-        
-        if ( !isInside && _frontView && [_c.frontViewController isViewLoaded] )
-        {
-            CGPoint pt = [self convertPoint:point toView:_frontView];
-            isInside = [_frontView pointInside:pt withEvent:event];
-        }
-        
-        if ( !isInside && _rightView && [_c.rightViewController isViewLoaded] )
-        {
-            CGPoint pt = [self convertPoint:point toView:_rightView];
-            isInside = [_rightView pointInside:pt withEvent:event];
-        }
+    if (self.blockPointInside) {
+        self.blockPointInside(&isInside, point, event);
     }
     return isInside;
 }

@@ -29,6 +29,7 @@
 
 #pragma mark - Blocks
 
+@property (nonatomic, copy) void (^blockPointInsideD)(BOOL *isInside, CGPoint point, UIEvent *event);
 @property (nonatomic, copy) void (^blockPointInside)(BOOL *isInside, CGPoint point, UIEvent *event);
 
 @end
