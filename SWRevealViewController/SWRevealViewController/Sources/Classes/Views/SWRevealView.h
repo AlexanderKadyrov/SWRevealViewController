@@ -20,7 +20,6 @@
 
 #pragma mark - Methods
 
-- (void)reloadShadow;
 - (void)prepareRearViewForPosition:(FrontViewPosition)newPosition;
 - (void)prepareRightViewForPosition:(FrontViewPosition)newPosition;
 - (void)unloadRearView;

@@ -576,6 +576,13 @@ const int FrontViewPositionNone = 0xff;
     [_contentView reloadShadow];
 }
 
+- (void)reloadShadow {
+    CALayer *frontViewLayer = _contentView.frontView.layer;
+    frontViewLayer.shadowColor = self.frontViewShadowColor.CGColor;
+    frontViewLayer.shadowOpacity = self.frontViewShadowOpacity;
+    frontViewLayer.shadowOffset = self.frontViewShadowOffset;
+    frontViewLayer.shadowRadius = self.frontViewShadowRadius;
+}
 
 - (UIPanGestureRecognizer*)panGestureRecognizer
 {
