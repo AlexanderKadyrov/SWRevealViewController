@@ -382,6 +382,8 @@ const int FrontViewPositionNone = 0xff;
 
     // create a custom content view for the controller
     
+    self.view.presentFrontViewHierarchically = _presentFrontViewHierarchically;
+    
     [self reloadShadow];
     
     // set the content view to resize along with its superview

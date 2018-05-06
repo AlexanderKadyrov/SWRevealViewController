@@ -51,10 +51,8 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 
 #pragma mark - Methods
 
-- (CGRect)hierarchycalFrameAdjustment:(CGRect)frame
-{
-    if ( _c.presentFrontViewHierarchically )
-    {
+- (CGRect)hierarchycalFrameAdjustment:(CGRect)frame {
+    if (self.presentFrontViewHierarchically) {
         UINavigationBar *dummyBar = [[UINavigationBar alloc] init];
         CGFloat barHeight = [dummyBar sizeThatFits:CGSizeMake(100,100)].height;
         CGFloat offset = barHeight + statusBarAdjustment(self);
@@ -63,7 +61,6 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     }
     return frame;
 }
-
 
 - (void)prepareRearViewForPosition:(FrontViewPosition)newPosition
 {
