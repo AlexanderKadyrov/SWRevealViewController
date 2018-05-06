@@ -413,6 +413,47 @@ const int FrontViewPositionNone = 0xff;
     // now set the desired initial position
     [self _setFrontViewPosition:initialPosition withDuration:0.0];
     
+    [self.view setBlockLayoutRearViews:^(CGFloat locationX) {
+        CGFloat rearRevealWidth = self.rearViewRevealWidth;
+        if (rearRevealWidth < 0) rearRevealWidth = bounds.size.width + self.rearViewRevealWidth;
+        
+        CGFloat rearXLocation = scaledValue(locationX, -self.rearViewRevealDisplacement, 0, 0, rearRevealWidth);
+        
+        CGFloat rearWidth = rearRevealWidth + self.rearViewRevealOverdraw;
+        self.view.rearView.frame = CGRectMake(rearXLocation, 0.0, rearWidth, bounds.size.height);
+        
+        CGFloat rightRevealWidth = self.rightViewRevealWidth;
+        if ( rightRevealWidth < 0) rightRevealWidth = bounds.size.width + self.rightViewRevealWidth;
+        
+        CGFloat rightXLocation = scaledValue(locationX, 0, self.rightViewRevealDisplacement, -rightRevealWidth, 0);
+        
+        CGFloat rightWidth = rightRevealWidth + self.rightViewRevealOverdraw;
+        self.view.rightView.frame = CGRectMake(bounds.size.width-rightWidth+rightXLocation, 0.0f, rightWidth, bounds.size.height);
+    }];
+    
+    [self.view setBlockLayoutSubviews:^{
+        FrontViewPosition position = self.frontViewPosition;
+        CGFloat xLocation = [self.view frontLocationForPosition:position];
+        
+        // set rear view frames
+        if (self.view.blockLayoutRearViews) {
+            self.view.blockLayoutRearViews(xLocation);
+        }
+        
+        // set front view frame
+        CGRect frame = CGRectMake(xLocation, 0.0f, bounds.size.width, bounds.size.height);
+        self.view.frontView.frame = [self.view hierarchycalFrameAdjustment:frame];
+        
+        // setup front view shadow path if needed (front view loaded and not removed)
+        UIViewController *frontViewController = self.frontViewController;
+        BOOL viewLoaded = frontViewController != nil && frontViewController.isViewLoaded;
+        BOOL viewNotRemoved = position > FrontViewPositionLeftSideMostRemoved && position < FrontViewPositionRightMostRemoved;
+        CGRect shadowBounds = viewLoaded && viewNotRemoved  ? self.view.frontView.bounds : CGRectZero;
+        
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:shadowBounds];
+        self.view.frontView.layer.shadowPath = shadowPath.CGPath;
+    }];
+    
     [self.view setBlockPointInsideD:^(BOOL *isInside, CGPoint point, UIEvent *event) {
         if (self.extendsPointInsideHit) {
             if (isInside == NO  && self.view.rearView && [self.rearViewController isViewLoaded]) {
@@ -441,24 +482,6 @@ const int FrontViewPositionNone = 0xff;
                 }
             }
         }
-    }];
-    
-    [self.view setBlockLayoutRearViews:^(CGFloat locationX) {
-        CGFloat rearRevealWidth = self.rearViewRevealWidth;
-        if (rearRevealWidth < 0) rearRevealWidth = bounds.size.width + self.rearViewRevealWidth;
-        
-        CGFloat rearXLocation = scaledValue(locationX, -self.rearViewRevealDisplacement, 0, 0, rearRevealWidth);
-        
-        CGFloat rearWidth = rearRevealWidth + self.rearViewRevealOverdraw;
-        self.view.rearView.frame = CGRectMake(rearXLocation, 0.0, rearWidth, bounds.size.height);
-        
-        CGFloat rightRevealWidth = self.rightViewRevealWidth;
-        if ( rightRevealWidth < 0) rightRevealWidth = bounds.size.width + self.rightViewRevealWidth;
-        
-        CGFloat rightXLocation = scaledValue(locationX, 0, self.rightViewRevealDisplacement, -rightRevealWidth, 0);
-        
-        CGFloat rightWidth = rightRevealWidth + self.rightViewRevealOverdraw;
-        self.view.rightView.frame = CGRectMake(bounds.size.width-rightWidth+rightXLocation, 0.0f, rightWidth, bounds.size.height);
     }];
 }
 

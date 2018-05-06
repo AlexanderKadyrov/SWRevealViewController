@@ -133,30 +133,12 @@
 
 # pragma mark - overrides
 
-- (void)layoutSubviews
-{
-    if ( _disableLayout ) return;
-    
-    CGRect bounds = self.bounds;
-    
-    FrontViewPosition position = _c.frontViewPosition;
-    CGFloat xLocation = [self frontLocationForPosition:position];
-    
-    // set rear view frames
-    [self _layoutRearViewsForLocation:xLocation];
-    
-    // set front view frame
-    CGRect frame = CGRectMake(xLocation, 0.0f, bounds.size.width, bounds.size.height);
-    _frontView.frame = [self hierarchycalFrameAdjustment:frame];
-    
-    // setup front view shadow path if needed (front view loaded and not removed)
-    UIViewController *frontViewController = _c.frontViewController;
-    BOOL viewLoaded = frontViewController != nil && frontViewController.isViewLoaded;
-    BOOL viewNotRemoved = position > FrontViewPositionLeftSideMostRemoved && position < FrontViewPositionRightMostRemoved;
-    CGRect shadowBounds = viewLoaded && viewNotRemoved  ? _frontView.bounds : CGRectZero;
-    
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:shadowBounds];
-    _frontView.layer.shadowPath = shadowPath.CGPath;
+- (void)layoutSubviews {
+    if (_disableLayout == NO) {
+        if (self.blockLayoutSubviews) {
+            self.blockLayoutSubviews();
+        }
+    }
 }
 
 - (BOOL)pointInsideD:(CGPoint)point withEvent:(UIEvent *)event {

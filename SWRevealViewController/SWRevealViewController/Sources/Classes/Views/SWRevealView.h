@@ -22,6 +22,7 @@
 
 #pragma mark - Methods
 
+- (CGRect)hierarchycalFrameAdjustment:(CGRect)frame;
 - (void)prepareRearViewForPosition:(FrontViewPosition)newPosition;
 - (void)prepareRightViewForPosition:(FrontViewPosition)newPosition;
 - (void)unloadRearView;
@@ -34,5 +35,6 @@
 @property (nonatomic, copy) void (^blockPointInsideD)(BOOL *isInside, CGPoint point, UIEvent *event);
 @property (nonatomic, copy) void (^blockPointInside)(BOOL *isInside, CGPoint point, UIEvent *event);
 @property (nonatomic, copy) void (^blockLayoutRearViews)(CGFloat locationX);
+@property (nonatomic, copy) dispatch_block_t blockLayoutSubviews;
 
 @end
