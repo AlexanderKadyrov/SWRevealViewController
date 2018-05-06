@@ -11,10 +11,6 @@
 
 @interface SWRevealView: UIView
 
-#pragma mark - Initialization
-
-- (instancetype)initWithFrame:(CGRect)frame controller:(SWRevealViewController *)controller;
-
 #pragma mark - Properties
 
 @property (nonatomic, readonly) UIView *rearView;

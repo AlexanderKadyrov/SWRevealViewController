@@ -8,15 +8,11 @@
 
 #import "SWRevealView.h"
 #import "SWStatusBar.h"
-
-@interface SWRevealView ()
-@property (nonatomic, strong, readonly) SWRevealViewController *c;
-@end
+#import "Masonry.h"
 
 @implementation SWRevealView
 
-static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1, CGFloat max1)
-{
+static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1, CGFloat max1) {
     CGFloat result = min2 + (v1-min1)*((max2-min2)/(max1-min1));
     if ( result != result ) return min2;  // nan
     if ( result < min2 ) return min2;
@@ -26,17 +22,32 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 
 #pragma mark - Initialization
 
-- (instancetype)initWithFrame:(CGRect)frame controller:(SWRevealViewController *)controller {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _c = controller;
-        CGRect bounds = self.bounds;
-        _frontView = [[UIView alloc] initWithFrame:bounds];
-        _frontView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        [self reloadShadow];
-        [self addSubview:_frontView];
+        [self makeItems];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self makeItems];
+    }
+    return self;
+}
+
+#pragma mark - Make
+
+- (void)makeItems {
+    self.frame = [UIScreen mainScreen].bounds;
+    _frontView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self reloadShadow];
+    [self addSubview:_frontView];
+    [self.frontView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
 }
 
 #pragma mark - Methods
