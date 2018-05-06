@@ -23,8 +23,8 @@
 #pragma mark - Methods
 
 - (CGRect)hierarchycalFrameAdjustment:(CGRect)frame;
-- (void)prepareRearViewForPosition:(FrontViewPosition)newPosition;
-- (void)prepareRightViewForPosition:(FrontViewPosition)newPosition;
+- (void)prepareRearViewForPosition:(FrontViewPosition)newPosition frontViewPosition:(FrontViewPosition)frontViewPosition;
+- (void)prepareRightViewForPosition:(FrontViewPosition)newPosition frontViewPosition:(FrontViewPosition)frontViewPosition;
 - (void)unloadRearView;
 - (void)unloadRightView;
 - (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition;

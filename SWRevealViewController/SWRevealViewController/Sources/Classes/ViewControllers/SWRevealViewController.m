@@ -1298,7 +1298,7 @@ const int FrontViewPositionNone = 0xff;
     BOOL disappear = newPosition <= FrontViewPositionLeft && (_rearViewPosition > FrontViewPositionLeft && _rearViewPosition != FrontViewPositionNone);
     
     if ( appear )
-        [self.view prepareRearViewForPosition:newPosition];
+        [self.view prepareRearViewForPosition:newPosition frontViewPosition:self.frontViewPosition];
     
     _rearViewPosition = newPosition;
     
@@ -1326,7 +1326,7 @@ const int FrontViewPositionNone = 0xff;
     BOOL disappear = newPosition >= FrontViewPositionLeft && (_rightViewPosition < FrontViewPositionLeft && _rightViewPosition != FrontViewPositionNone);
     
     if ( appear )
-        [self.view prepareRightViewForPosition:newPosition];
+        [self.view prepareRightViewForPosition:newPosition frontViewPosition:self.frontViewPosition];
     
     _rightViewPosition = newPosition;
     

@@ -54,35 +54,27 @@
     return frame;
 }
 
-- (void)prepareRearViewForPosition:(FrontViewPosition)newPosition
-{
-    if ( _rearView == nil )
-    {
+- (void)prepareRearViewForPosition:(FrontViewPosition)newPosition frontViewPosition:(FrontViewPosition)frontViewPosition {
+    if ( ! _rearView) {
         _rearView = [[UIView alloc] initWithFrame:self.bounds];
         _rearView.autoresizingMask = /*UIViewAutoresizingFlexibleWidth|*/UIViewAutoresizingFlexibleHeight;
         [self insertSubview:_rearView belowSubview:_frontView];
     }
-    
-    CGFloat xLocation = [self frontLocationForPosition:_c.frontViewPosition];
+    CGFloat xLocation = [self frontLocationForPosition:frontViewPosition];
     [self _layoutRearViewsForLocation:xLocation];
     [self _prepareForNewPosition:newPosition];
 }
 
-
-- (void)prepareRightViewForPosition:(FrontViewPosition)newPosition
-{
-    if ( _rightView == nil )
-    {
+- (void)prepareRightViewForPosition:(FrontViewPosition)newPosition frontViewPosition:(FrontViewPosition)frontViewPosition {
+    if ( ! _rightView) {
         _rightView = [[UIView alloc] initWithFrame:self.bounds];
         _rightView.autoresizingMask = /*UIViewAutoresizingFlexibleWidth|*/UIViewAutoresizingFlexibleHeight;
         [self insertSubview:_rightView belowSubview:_frontView];
     }
-    
-    CGFloat xLocation = [self frontLocationForPosition:_c.frontViewPosition];
+    CGFloat xLocation = [self frontLocationForPosition:frontViewPosition];
     [self _layoutRearViewsForLocation:xLocation];
     [self _prepareForNewPosition:newPosition];
 }
-
 
 - (void)unloadRearView
 {
