@@ -12,14 +12,6 @@
 
 @implementation SWRevealView
 
-static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1, CGFloat max1) {
-    CGFloat result = min2 + (v1-min1)*((max2-min2)/(max1-min1));
-    if ( result != result ) return min2;  // nan
-    if ( result < min2 ) return min2;
-    if ( result > max2 ) return max2;
-    return result;
-}
-
 #pragma mark - Initialization
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -185,28 +177,11 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 
 # pragma mark - private
 
-
-- (void)_layoutRearViewsForLocation:(CGFloat)xLocation
-{
-    CGRect bounds = self.bounds;
-    
-    CGFloat rearRevealWidth = _c.rearViewRevealWidth;
-    if ( rearRevealWidth < 0) rearRevealWidth = bounds.size.width + _c.rearViewRevealWidth;
-    
-    CGFloat rearXLocation = scaledValue(xLocation, -_c.rearViewRevealDisplacement, 0, 0, rearRevealWidth);
-    
-    CGFloat rearWidth = rearRevealWidth + _c.rearViewRevealOverdraw;
-    _rearView.frame = CGRectMake(rearXLocation, 0.0, rearWidth, bounds.size.height);
-    
-    CGFloat rightRevealWidth = _c.rightViewRevealWidth;
-    if ( rightRevealWidth < 0) rightRevealWidth = bounds.size.width + _c.rightViewRevealWidth;
-    
-    CGFloat rightXLocation = scaledValue(xLocation, 0, _c.rightViewRevealDisplacement, -rightRevealWidth, 0);
-    
-    CGFloat rightWidth = rightRevealWidth + _c.rightViewRevealOverdraw;
-    _rightView.frame = CGRectMake(bounds.size.width-rightWidth+rightXLocation, 0.0f, rightWidth, bounds.size.height);
+- (void)_layoutRearViewsForLocation:(CGFloat)xLocation {
+    if (self.blockLayoutRearViews) {
+        self.blockLayoutRearViews(xLocation);
+    }
 }
-
 
 - (void)_prepareForNewPosition:(FrontViewPosition)newPosition;
 {

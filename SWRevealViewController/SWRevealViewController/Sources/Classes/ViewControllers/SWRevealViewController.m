@@ -29,6 +29,14 @@
 #import "SWRevealView.h"
 #import "SWStatusBar.h"
 
+static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1, CGFloat max1) {
+    CGFloat result = min2 + (v1-min1)*((max2-min2)/(max1-min1));
+    if ( result != result ) return min2;  // nan
+    if ( result < min2 ) return min2;
+    if ( result > max2 ) return max2;
+    return result;
+}
+
 #pragma mark - SWContextTransitioningObject
 
 @interface SWContextTransitionObject : NSObject<UIViewControllerContextTransitioning>
@@ -379,6 +387,10 @@ const int FrontViewPositionNone = 0xff;
     // This is what Apple used to tell us to set as the initial frame, which is of course totally irrelevant
     // with view controller containment patterns, let's leave it for the sake of it!
     // CGRect frame = [[UIScreen mainScreen] applicationFrame];
+    
+    // On iOS7 the applicationFrame does not return the whole screen. This is possibly a bug.
+    // As a workaround we use the screen bounds, this still works on iOS6, any zero based frame would work anyway!
+    CGRect bounds = [UIScreen mainScreen].bounds;
 
     // create a custom content view for the controller
     
@@ -429,6 +441,24 @@ const int FrontViewPositionNone = 0xff;
                 }
             }
         }
+    }];
+    
+    [self.view setBlockLayoutRearViews:^(CGFloat locationX) {
+        CGFloat rearRevealWidth = self.rearViewRevealWidth;
+        if (rearRevealWidth < 0) rearRevealWidth = bounds.size.width + self.rearViewRevealWidth;
+        
+        CGFloat rearXLocation = scaledValue(locationX, -self.rearViewRevealDisplacement, 0, 0, rearRevealWidth);
+        
+        CGFloat rearWidth = rearRevealWidth + self.rearViewRevealOverdraw;
+        self.view.rearView.frame = CGRectMake(rearXLocation, 0.0, rearWidth, bounds.size.height);
+        
+        CGFloat rightRevealWidth = self.rightViewRevealWidth;
+        if ( rightRevealWidth < 0) rightRevealWidth = bounds.size.width + self.rightViewRevealWidth;
+        
+        CGFloat rightXLocation = scaledValue(locationX, 0, self.rightViewRevealDisplacement, -rightRevealWidth, 0);
+        
+        CGFloat rightWidth = rightRevealWidth + self.rightViewRevealOverdraw;
+        self.view.rightView.frame = CGRectMake(bounds.size.width-rightWidth+rightXLocation, 0.0f, rightWidth, bounds.size.height);
     }];
 }
 

@@ -33,5 +33,6 @@
 
 @property (nonatomic, copy) void (^blockPointInsideD)(BOOL *isInside, CGPoint point, UIEvent *event);
 @property (nonatomic, copy) void (^blockPointInside)(BOOL *isInside, CGPoint point, UIEvent *event);
+@property (nonatomic, copy) void (^blockLayoutRearViews)(CGFloat locationX);
 
 @end
