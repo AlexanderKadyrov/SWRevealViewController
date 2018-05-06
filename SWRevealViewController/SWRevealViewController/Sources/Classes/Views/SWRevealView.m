@@ -197,27 +197,13 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     return isInside;
 }
 
-
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
-{
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     BOOL isInside = [super pointInside:point withEvent:event];
-    if ( !isInside && _c.extendsPointInsideHit )
-    {
-        UIView *testViews[] = { _rearView, _frontView, _rightView };
-        UIViewController *testControllers[] = { _c.rearViewController, _c.frontViewController, _c.rightViewController };
-        
-        for ( NSInteger i=0 ; i<3 && !isInside ; i++ )
-        {
-            if ( testViews[i] && [testControllers[i] isViewLoaded] )
-            {
-                CGPoint pt = [self convertPoint:point toView:testViews[i]];
-                isInside = [testViews[i] pointInside:pt withEvent:event];
-            }
-        }
+    if (self.blockPointInside) {
+        self.blockPointInside(&isInside, point, event);
     }
     return isInside;
 }
-
 
 # pragma mark - private
 

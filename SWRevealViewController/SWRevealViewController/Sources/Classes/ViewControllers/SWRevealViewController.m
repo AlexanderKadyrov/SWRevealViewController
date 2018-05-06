@@ -398,6 +398,19 @@ const int FrontViewPositionNone = 0xff;
     
     // now set the desired initial position
     [self _setFrontViewPosition:initialPosition withDuration:0.0];
+    
+    [self.view setBlockPointInside:^(BOOL *isInside, CGPoint point, UIEvent *event) {
+        if (isInside == NO && self.extendsPointInsideHit) {
+            UIView *testViews[] = {self.view.rearView, self.view.frontView, self.view.rightView};
+            UIViewController *testControllers[] = {self.rearViewController, self.frontViewController, self.rightViewController};
+            for (NSInteger i = 0 ; i < 3 && isInside == NO; i++) {
+                if (testViews[i] && [testControllers[i] isViewLoaded]) {
+                    CGPoint pt = [self.view convertPoint:point toView:testViews[i]];
+                    *isInside = [testViews[i] pointInside:pt withEvent:event];
+                }
+            }
+        }
+    }];
 }
 
 

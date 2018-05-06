@@ -27,4 +27,8 @@
 - (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition;
 - (void)dragFrontViewToXLocation:(CGFloat)xLocation;
 
+#pragma mark - Blocks
+
+@property (nonatomic, copy) void (^blockPointInside)(BOOL *isInside, CGPoint point, UIEvent *event);
+
 @end
