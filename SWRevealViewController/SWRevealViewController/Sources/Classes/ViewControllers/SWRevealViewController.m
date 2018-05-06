@@ -376,19 +376,17 @@ const int FrontViewPositionNone = 0xff;
     // This is what Apple used to tell us to set as the initial frame, which is of course totally irrelevant
     // with view controller containment patterns, let's leave it for the sake of it!
     // CGRect frame = [[UIScreen mainScreen] applicationFrame];
-    
-    // On iOS7 the applicationFrame does not return the whole screen. This is possibly a bug.
-    // As a workaround we use the screen bounds, this still works on iOS6, any zero based frame would work anyway!
-    CGRect frame = [[UIScreen mainScreen] bounds];
 
     // create a custom content view for the controller
-    _contentView = [[SWRevealView alloc] initWithFrame:frame controller:self];
+    if ( ! _contentView) {
+        _contentView = [[SWRevealView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    }
     
     // set the content view to resize along with its superview
-    [_contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+    _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // set the content view to clip its bounds if requested
-    [_contentView setClipsToBounds:_clipsViewsToBounds];
+    _contentView.clipsToBounds = _clipsViewsToBounds;
 
     // set our contentView to the controllers view
     self.view = _contentView;
@@ -552,28 +550,28 @@ const int FrontViewPositionNone = 0xff;
 - (void)setFrontViewShadowRadius:(CGFloat)frontViewShadowRadius
 {
     _frontViewShadowRadius = frontViewShadowRadius;
-    [_contentView reloadShadow];
+    [self reloadShadow];
 }
 
 
 - (void)setFrontViewShadowOffset:(CGSize)frontViewShadowOffset
 {
     _frontViewShadowOffset = frontViewShadowOffset;
-    [_contentView reloadShadow];
+    [self reloadShadow];
 }
 
 
 - (void)setFrontViewShadowOpacity:(CGFloat)frontViewShadowOpacity
 {
     _frontViewShadowOpacity = frontViewShadowOpacity;
-    [_contentView reloadShadow];
+    [self reloadShadow];
 }
 
 
 - (void)setFrontViewShadowColor:(UIColor *)frontViewShadowColor
 {
     _frontViewShadowColor = frontViewShadowColor;
-    [_contentView reloadShadow];
+    [self reloadShadow];
 }
 
 - (void)reloadShadow {
