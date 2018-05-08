@@ -8,12 +8,14 @@
 
 #import "SWStatusBar.h"
 
+@implementation SWStatusBar
+
 #pragma mark - StatusBar Helper Function
 
 // computes the required offset adjustment due to the status bar for the passed in view,
 // it will return the statusBar height if view fully overlaps the statusBar, otherwise returns 0.0f
 
-static CGFloat statusBarAdjustment(UIView *view) {
++ (CGFloat)statusBarAdjustment:(UIView *)view {
     CGFloat adjustment = 0.0f;
     UIApplication *app = [UIApplication sharedApplication];
     CGRect viewFrame = [view convertRect:view.bounds toView:[app keyWindow]];
@@ -23,3 +25,5 @@ static CGFloat statusBarAdjustment(UIView *view) {
     }
     return adjustment;
 }
+
+@end

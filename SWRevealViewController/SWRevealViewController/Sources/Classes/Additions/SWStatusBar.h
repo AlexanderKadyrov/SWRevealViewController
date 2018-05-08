@@ -8,4 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-static CGFloat statusBarAdjustment(UIView *view);
+@interface SWStatusBar: NSObject
+
++ (CGFloat)statusBarAdjustment:(UIView *)view;
+
+@end
