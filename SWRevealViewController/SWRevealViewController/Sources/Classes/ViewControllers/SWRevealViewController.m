@@ -484,6 +484,11 @@ const int FrontViewPositionNone = 0xff;
         }
     }];
     
+    [self.view setBlockAdjustedDragLocation:^(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, BOOL *bounceBack, BOOL *stableDrag, NSInteger symetry) {
+        [self _getRevealWidth:revealWidth revealOverDraw:revealOverdraw forSymetry:symetry];
+        [self _getBounceBack:bounceBack pStableDrag:stableDrag forSymetry:symetry];
+    }];
+    
     [self.view setBlockFrontLocationForPosition:^(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, NSInteger symetry) {
         [self _getRevealWidth:revealWidth revealOverDraw:revealOverdraw forSymetry:symetry];
         [self _getAdjustedFrontViewPosition:frontViewPosition forSymetry:symetry];
@@ -775,7 +780,7 @@ const int FrontViewPositionNone = 0xff;
     if (*pRevealWidth < 0) *pRevealWidth = self.view.bounds.size.width + *pRevealWidth;
 }
 
-- (void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(int)symetry
+- (void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(NSInteger)symetry
 {
     if ( symetry < 0 ) *pBounceBack = _bounceBackOnLeftOverdraw, *pStableDrag = _stableDragOnLeftOverdraw;
     else *pBounceBack = _bounceBackOnOverdraw, *pStableDrag = _stableDragOnOverdraw;
