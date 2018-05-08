@@ -620,17 +620,13 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
-- (id)init
-{
-    return [self initWithRearViewController:nil frontViewController:nil];
+- (id)init {
+    return [self initWithNibName:NSStringFromClass(self.class) rearViewController:nil frontViewController:nil];
 }
 
-
-- (id)initWithRearViewController:(UIViewController *)rearViewController frontViewController:(UIViewController *)frontViewController;
-{
-    self = [super init];
-    if ( self )
-    {
+- (instancetype)initWithNibName:(NSString *)nibName rearViewController:(UIViewController *)rearViewController frontViewController:(UIViewController *)frontViewController {
+    self = [super initWithNibName:nibName bundle:nil];
+    if (self) {
         [self _initDefaultProperties];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceRearController withViewController:rearViewController animated:NO];
         [self _performTransitionOperation:SWRevealControllerOperationReplaceFrontController withViewController:frontViewController animated:NO];
