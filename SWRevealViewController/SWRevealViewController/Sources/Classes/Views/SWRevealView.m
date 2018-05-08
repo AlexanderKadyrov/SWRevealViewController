@@ -109,7 +109,7 @@
 - (void)dragFrontViewToXLocation:(CGFloat)xLocation frontViewPosition:(FrontViewPosition)frontViewPosition {
     CGRect bounds = self.bounds;
     
-    xLocation = [self _adjustedDragLocationForLocation:xLocation];
+    xLocation = [self _adjustedDragLocationForLocation:xLocation frontViewPosition:frontViewPosition];
     [self _layoutRearViewsForLocation:xLocation];
     
     CGRect frame = CGRectMake(xLocation, 0.0f, bounds.size.width, bounds.size.height);
@@ -165,39 +165,36 @@
         [self exchangeSubviewAtIndex:rightIndex withSubviewAtIndex:rearIndex];
 }
 
-
-- (CGFloat)_adjustedDragLocationForLocation:(CGFloat)x
-{
+- (CGFloat)_adjustedDragLocationForLocation:(CGFloat)x frontViewPosition:(FrontViewPosition)frontViewPosition {
+    NSInteger symetry = (x < 0) ? -1 : 1;
+    CGFloat revealOverdraw = 0.0;
+    CGFloat revealWidth = 0.0;
     CGFloat result;
     
-    CGFloat revealWidth;
-    CGFloat revealOverdraw;
-    BOOL bounceBack;
-    BOOL stableDrag;
-    FrontViewPosition position = _c.frontViewPosition;
+    BOOL bounceBack = NO;
+    BOOL stableDrag = NO;
     
-    int symetry = x<0 ? -1 : 1;
+    if (self.blockFrontLocationForPosition) {
+        self.blockFrontLocationForPosition(&frontViewPosition, &revealOverdraw, &revealWidth, symetry);
+    }
     
-    [_c _getRevealWidth:&revealWidth revealOverDraw:&revealOverdraw forSymetry:symetry];
-    [_c _getBounceBack:&bounceBack pStableDrag:&stableDrag forSymetry:symetry];
-    
-    BOOL stableTrack = !bounceBack || stableDrag || position==FrontViewPositionRightMost || position==FrontViewPositionLeftSideMost;
-    if ( stableTrack )
-    {
+    BOOL stableTrack = !bounceBack || stableDrag || frontViewPosition == FrontViewPositionRightMost || frontViewPosition == FrontViewPositionLeftSideMost;
+    if (stableTrack) {
         revealWidth += revealOverdraw;
         revealOverdraw = 0.0f;
     }
     
     x = x * symetry;
     
-    if (x <= revealWidth)
+    if (x <= revealWidth) {
         result = x;         // Translate linearly.
-    
-    else if (x <= revealWidth+2*revealOverdraw)
+    }
+    else if (x <= revealWidth+2*revealOverdraw) {
         result = revealWidth + (x-revealWidth)/2;   // slow down translation by halph the movement.
-    
-    else
+    }
+    else {
         result = revealWidth+revealOverdraw;        // keep at the rightMost location.
+    }
     
     return result * symetry;
 }
