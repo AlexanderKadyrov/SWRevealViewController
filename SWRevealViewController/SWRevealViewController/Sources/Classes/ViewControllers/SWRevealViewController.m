@@ -368,8 +368,8 @@ const int FrontViewPositionNone = 0xff;
 
 #pragma mark - View lifecycle
 
-- (void)loadView {
-    [super loadView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     // load any defined front/rear controllers from the storyboard before
     [self loadStoryboardControllers];
@@ -474,7 +474,7 @@ const int FrontViewPositionNone = 0xff;
         }
     }];
     
-    [self.view setBlockAdjustedDragLocation:^(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, BOOL *bounceBack, BOOL *stableDrag, NSInteger symetry) {
+    [self.view setBlockAdjustedDragLocation:^(CGFloat *revealOverdraw, CGFloat *revealWidth, BOOL *bounceBack, BOOL *stableDrag, NSInteger symetry) {
         CGFloat ro;
         CGFloat rw;
         BOOL bb;
