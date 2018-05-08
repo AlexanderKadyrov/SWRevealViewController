@@ -1006,7 +1006,7 @@ const int FrontViewPositionNone = 0xff;
         [self _rearViewDeploymentForNewFrontViewPosition:FrontViewPositionRight]();
     }
     
-    [self.view dragFrontViewToXLocation:xLocation];
+    [self.view dragFrontViewToXLocation:xLocation frontViewPosition:self.frontViewPosition];
     [self _notifyPanGestureMoved];
 }
 
