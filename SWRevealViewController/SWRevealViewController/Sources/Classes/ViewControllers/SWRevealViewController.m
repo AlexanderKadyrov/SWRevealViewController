@@ -1383,7 +1383,7 @@ const int FrontViewPositionNone = 0xff;
         
         if ( adjust )
         {
-            [(id)controllerView setContentInset:UIEdgeInsetsMake(statusBarAdjustment(self.view), 0, 0, 0)];
+            [(id)controllerView setContentInset:UIEdgeInsetsMake([SWStatusBar statusBarAdjustment:self.view], 0, 0, 0)];
         }
     }
     

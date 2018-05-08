@@ -47,7 +47,7 @@
     if (self.presentFrontViewHierarchically) {
         UINavigationBar *dummyBar = [[UINavigationBar alloc] init];
         CGFloat barHeight = [dummyBar sizeThatFits:CGSizeMake(100,100)].height;
-        CGFloat offset = barHeight + statusBarAdjustment(self);
+        CGFloat offset = barHeight + [SWStatusBar statusBarAdjustment:self];
         frame.origin.y += offset;
         frame.size.height -= offset;
     }
