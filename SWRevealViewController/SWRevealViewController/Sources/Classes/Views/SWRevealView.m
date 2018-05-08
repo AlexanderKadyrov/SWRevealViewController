@@ -106,8 +106,7 @@
     return location*symetry;
 }
 
-- (void)dragFrontViewToXLocation:(CGFloat)xLocation
-{
+- (void)dragFrontViewToXLocation:(CGFloat)xLocation frontViewPosition:(FrontViewPosition)frontViewPosition {
     CGRect bounds = self.bounds;
     
     xLocation = [self _adjustedDragLocationForLocation:xLocation];
@@ -116,7 +115,6 @@
     CGRect frame = CGRectMake(xLocation, 0.0f, bounds.size.width, bounds.size.height);
     _frontView.frame = [self hierarchycalFrameAdjustment:frame];
 }
-
 
 # pragma mark - overrides
 

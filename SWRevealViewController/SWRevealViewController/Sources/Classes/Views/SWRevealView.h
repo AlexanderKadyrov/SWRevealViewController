@@ -28,7 +28,7 @@
 - (void)unloadRearView;
 - (void)unloadRightView;
 - (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition;
-- (void)dragFrontViewToXLocation:(CGFloat)xLocation;
+- (void)dragFrontViewToXLocation:(CGFloat)xLocation frontViewPosition:(FrontViewPosition)frontViewPosition;
 
 #pragma mark - Blocks
 
