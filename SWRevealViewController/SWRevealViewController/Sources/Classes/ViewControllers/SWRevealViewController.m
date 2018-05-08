@@ -483,6 +483,11 @@ const int FrontViewPositionNone = 0xff;
             }
         }
     }];
+    
+    [self.view setBlockFrontLocationForPosition:^(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, NSInteger symetry) {
+        [self _getRevealWidth:revealWidth revealOverDraw:revealOverdraw forSymetry:symetry];
+        [self _getAdjustedFrontViewPosition:frontViewPosition forSymetry:symetry];
+    }];
 }
 
 
@@ -762,7 +767,7 @@ const int FrontViewPositionNone = 0xff;
 
 #pragma mark - Symetry
 
-- (void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(int)symetry
+- (void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(NSInteger)symetry
 {
     if ( symetry < 0 ) *pRevealWidth = _rightViewRevealWidth, *pRevealOverdraw = _rightViewRevealOverdraw;
     else *pRevealWidth = _rearViewRevealWidth, *pRevealOverdraw = _rearViewRevealOverdraw;
@@ -776,7 +781,7 @@ const int FrontViewPositionNone = 0xff;
     else *pBounceBack = _bounceBackOnOverdraw, *pStableDrag = _stableDragOnOverdraw;
 }
 
-- (void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(int)symetry
+- (void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(NSInteger)symetry
 {
     if ( symetry < 0 ) *frontViewPosition = FrontViewPositionLeft + symetry*(*frontViewPosition-FrontViewPositionLeft);
 }

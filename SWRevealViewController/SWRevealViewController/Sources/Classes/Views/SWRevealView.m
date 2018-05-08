@@ -89,27 +89,22 @@
     _rightView = nil;
 }
 
-
-- (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition
-{
-    CGFloat revealWidth;
-    CGFloat revealOverdraw;
-    
+- (CGFloat)frontLocationForPosition:(FrontViewPosition)frontViewPosition {
+    NSInteger symetry = (frontViewPosition < FrontViewPositionLeft) ? -1 : 1;
+    CGFloat revealOverdraw = 0.0;
+    CGFloat revealWidth = 0.0;
     CGFloat location = 0.0f;
-    
-    int symetry = frontViewPosition<FrontViewPositionLeft? -1 : 1;
-    [_c _getRevealWidth:&revealWidth revealOverDraw:&revealOverdraw forSymetry:symetry];
-    [_c _getAdjustedFrontViewPosition:&frontViewPosition forSymetry:symetry];
-    
-    if ( frontViewPosition == FrontViewPositionRight )
+    if (self.blockFrontLocationForPosition) {
+        self.blockFrontLocationForPosition(&frontViewPosition, &revealOverdraw, &revealWidth, symetry);
+    }
+    if (frontViewPosition == FrontViewPositionRight) {
         location = revealWidth;
-    
-    else if ( frontViewPosition > FrontViewPositionRight )
+    }
+    else if (frontViewPosition > FrontViewPositionRight) {
         location = revealWidth + revealOverdraw;
-    
+    }
     return location*symetry;
 }
-
 
 - (void)dragFrontViewToXLocation:(CGFloat)xLocation
 {
