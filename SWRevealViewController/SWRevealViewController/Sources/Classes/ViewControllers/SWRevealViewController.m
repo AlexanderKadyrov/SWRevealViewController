@@ -284,7 +284,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     BOOL _userInteractionStore;
 }
 
-@synthesize view = _view;
+@dynamic view;
 
 const int FrontViewPositionNone = 0xff;
 
