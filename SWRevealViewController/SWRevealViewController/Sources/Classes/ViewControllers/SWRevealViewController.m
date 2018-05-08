@@ -368,10 +368,8 @@ const int FrontViewPositionNone = 0xff;
 
 #pragma mark - View lifecycle
 
-- (void)loadView
-{
-    // Do not call super, to prevent the apis from unfruitful looking for inexistent xibs!
-    //[super loadView];
+- (void)loadView {
+    [super loadView];
     
     // load any defined front/rear controllers from the storyboard before
     [self loadStoryboardControllers];
@@ -383,7 +381,7 @@ const int FrontViewPositionNone = 0xff;
     // On iOS7 the applicationFrame does not return the whole screen. This is possibly a bug.
     // As a workaround we use the screen bounds, this still works on iOS6, any zero based frame would work anyway!
     CGRect bounds = [UIScreen mainScreen].bounds;
-
+    
     // create a custom content view for the controller
     
     self.view.presentFrontViewHierarchically = _presentFrontViewHierarchically;
@@ -486,7 +484,6 @@ const int FrontViewPositionNone = 0xff;
         [self _getAdjustedFrontViewPosition:frontViewPosition forSymetry:symetry];
     }];
 }
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
