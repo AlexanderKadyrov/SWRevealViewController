@@ -475,13 +475,27 @@ const int FrontViewPositionNone = 0xff;
     }];
     
     [self.view setBlockAdjustedDragLocation:^(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, BOOL *bounceBack, BOOL *stableDrag, NSInteger symetry) {
-        [self _getRevealWidth:revealWidth revealOverDraw:revealOverdraw forSymetry:symetry];
-        [self _getBounceBack:bounceBack pStableDrag:stableDrag forSymetry:symetry];
+        CGFloat ro;
+        CGFloat rw;
+        BOOL bb;
+        BOOL sd;
+        [self _getRevealWidth:&rw revealOverDraw:&ro forSymetry:symetry];
+        [self _getBounceBack:&bb pStableDrag:&sd forSymetry:symetry];
+        *revealOverdraw = ro;
+        *revealWidth = rw;
+        *bounceBack = bb;
+        *stableDrag = sd;
     }];
     
     [self.view setBlockFrontLocationForPosition:^(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, NSInteger symetry) {
-        [self _getRevealWidth:revealWidth revealOverDraw:revealOverdraw forSymetry:symetry];
-        [self _getAdjustedFrontViewPosition:frontViewPosition forSymetry:symetry];
+        FrontViewPosition fp;
+        CGFloat ro;
+        CGFloat rw;
+        [self _getRevealWidth:&rw revealOverDraw:&ro forSymetry:symetry];
+        [self _getAdjustedFrontViewPosition:&fp forSymetry:symetry];
+        *frontViewPosition = fp;
+        *revealOverdraw = ro;
+        *revealWidth = rw;
     }];
 }
 

@@ -32,7 +32,7 @@
 
 #pragma mark - Blocks
 
-@property (nonatomic, copy) void (^blockAdjustedDragLocation)(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, BOOL *bounceBack, BOOL *stableDrag, NSInteger symetry);
+@property (nonatomic, copy) void (^blockAdjustedDragLocation)(CGFloat *revealOverdraw, CGFloat *revealWidth, BOOL *bounceBack, BOOL *stableDrag, NSInteger symetry);
 @property (nonatomic, copy) void (^blockFrontLocationForPosition)(FrontViewPosition *frontViewPosition, CGFloat *revealOverdraw, CGFloat *revealWidth, NSInteger symetry);
 @property (nonatomic, copy) void (^blockPointInsideD)(BOOL *isInside, CGPoint point, UIEvent *event);
 @property (nonatomic, copy) void (^blockPointInside)(BOOL *isInside, CGPoint point, UIEvent *event);

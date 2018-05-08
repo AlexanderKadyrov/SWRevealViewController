@@ -175,7 +175,7 @@
     BOOL stableDrag = NO;
     
     if (self.blockAdjustedDragLocation) {
-        self.blockAdjustedDragLocation(&frontViewPosition, &revealOverdraw, &revealWidth, &bounceBack, &stableDrag, symetry);
+        self.blockAdjustedDragLocation(&revealOverdraw, &revealWidth, &bounceBack, &stableDrag, symetry);
     }
     
     BOOL stableTrack = !bounceBack || stableDrag || frontViewPosition == FrontViewPositionRightMost || frontViewPosition == FrontViewPositionLeftSideMost;
